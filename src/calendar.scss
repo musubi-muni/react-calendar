@@ -1,0 +1,101 @@
+form.calendar-form {
+  width: 80%;
+  max-width: 700px;
+  padding-bottom: 1.5rem;
+  margin: 100px auto;
+  .calendar-box {
+    width: 75%;
+    margin: 0 auto 2rem;
+    border: 2px solid rgb(178, 206, 84);
+    box-shadow: 1px 1px 6px 0px rgba(178, 206, 84, 0.8);
+    .calendar-flame {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin: 0 auto 1.5rem;
+      .calendar-picker-box {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        .calendar {
+          width: 100%;
+          .calendar-header {
+            width: 90%;
+            margin: 0.5rem auto 0.7rem;
+            .calendar-header-box {
+              display: flex;
+              flex-wrap: nowrap;
+              justify-content: space-between;
+              .calendar-header-title {
+                font-size: 0.85rem;
+                font-weight: bold;
+                padding: 0.5rem 0.3rem;
+              }
+              .calendar-prev, .calendar-next {
+                font-size: 0.7rem;
+                font-weight: bold;
+                cursor: pointer;
+                padding: 0.2rem 0.3rem;
+                display: inline-flex;
+                align-items: center;
+                .right-triangle, .left-triangle {
+                  border-right: 0.6rem solid transparent;
+                  border-bottom: 1rem solid #b2ce54;
+                  border-left: 0.6rem solid transparent; 
+                  display: inline-block;
+                }
+                .right-triangle {
+                  margin-left: 0.4rem;
+                  transform: rotate(-270deg);
+                }
+                .left-triangle {
+                  margin-right: 0.4rem;
+                  transform: rotate(-90deg);
+                }
+              }
+            }
+          }
+          .calendar-body {
+            width: 90%;
+            margin: auto;
+            .calendar-table {
+              width: 100%;
+              .calendar-table-week {
+                display: flex;
+                flex-wrap: nowrap;
+                width: 100%;
+                .calendar-week {
+                  width: 14%;
+                  border-top: 2px solid #969494;
+                  margin: 0 auto;
+                }
+              }
+              .calendar-table-day {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                margin: 0 auto 0.5rem;
+                .calendar-day {
+                  width: 13.99%;
+                  margin: 0 auto;
+                  cursor: pointer;
+                }
+                .selected {
+                  background-color: #6daae2;
+                  color: #ffffff;
+                }
+              }
+              .calendar-week, .calendar-day {
+                text-align: center;
+                border-bottom: 2px solid #969494;
+                border-left: 1px solid #969494;
+                padding: 1rem 0;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
