@@ -11,3 +11,7 @@ and:
 ```bash
 yarn
 ```
+and:
+```bash
+yarn start
+```
