@@ -9,8 +9,7 @@ class CalendarBody extends Component {
     this.state = {
       year: this.props.year,
       month: this.props.month,
-      selectedDay: this.props.selectedDay,
-      day: ''
+      selectedDay: this.props.selectedDay
     };
   }
 
@@ -168,12 +167,12 @@ class CalendarBody extends Component {
       // 配列から取り除く
       updatedElementDate.splice(deletedElement, 1);
       document.getElementById(data).className = 'calendar-day';
-      this.setState({ holiday: updatedElementDate });
+      this.setState({ selectedDay: updatedElementDate });
       // 上記以外の場合、配列内に追加する
     } else {
       updatedElementDate.push(data);
       document.getElementById(data).className = 'calendar-day selected';
-      this.setState({ holiday: updatedElementDate });
+      this.setState({ selectedDay: updatedElementDate });
     }
   };
 
@@ -196,6 +195,7 @@ class CalendarBody extends Component {
 
   insertDay = calendarData => {
     return calendarData.map((data, index) => {
+      console.log(data);
       // date変換用
       let d = '';
       // key専用
@@ -233,15 +233,7 @@ class CalendarBody extends Component {
               : 'calendar-day'
           }
           style={{
-            borderRight: data.weekday === 6 ? '1px solid #969494' : 'none',
-            color:
-              text !== '' && this.state.day.indexOf(text.substr(0, 3)) >= 0
-                ? '#ffffff'
-                : null,
-            backgroundColor:
-              text !== '' && this.state.day.indexOf(text.substr(0, 3)) >= 0
-                ? '#ff5a5f'
-                : null
+            borderRight: data.weekday === 6 ? '1px solid #969494' : 'none'
           }}
           onClick={() => this.onHolidayClick(d)}
         >
