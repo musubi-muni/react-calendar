@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
 class CalendarBody extends Component {
   constructor(props) {
     super(props);
 
     this._isMounted = false;
-    this.week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    this.week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     this.state = {
       year: this.props.year,
       month: this.props.month,
@@ -51,7 +51,7 @@ class CalendarBody extends Component {
           前月へ
         </div>
         <div className="calendar-header-title">
-          {year + '年' + month + '月'}
+          {year + "年" + month + "月"}
         </div>
         <div
           className="calendar-next"
@@ -78,9 +78,7 @@ class CalendarBody extends Component {
     // 前月の情報の取得
     let prevMonth = new Date(year, month - 1);
     prevMonth.setMonth(prevMonth.getMonth() - 1);
-    // let calendar = document.getElementsByClassName("calendar");
     // カレンダーのHeader・Body共に一旦空にする
-    // calendar.textContent = null;
     return (
       <Fragment>
         <div className="calendar-header">
@@ -94,26 +92,26 @@ class CalendarBody extends Component {
   };
 
   renderCalendarMonth = (year, month) => {
-    let weekdayData = ['日', '月', '火', '水', '木', '金', '土'];
+    let weekdayData = ["日", "月", "火", "水", "木", "金", "土"];
     let calendarData = this.getMonth(year, month); // カレンダー情報
-    let startWeek = calendarData[0]['weekday']; // 月初めの曜日を取得
+    let startWeek = calendarData[0]["weekday"]; // 月初めの曜日を取得
     // 初日よりも前に日にちと曜日を入れていく
     // calendarDateの先頭に入れていく
     while (startWeek > 0) {
       startWeek--;
       calendarData.unshift({
-        day: '',
+        day: "",
         weekday: startWeek
       });
     }
     // 末日の曜日を取得
-    let endWeek = calendarData[calendarData.length - 1]['weekday'];
+    let endWeek = calendarData[calendarData.length - 1]["weekday"];
     // カレンダー上の末日より後を埋める
     // calendarDateの末尾に入れていく
     while (endWeek < 6) {
       endWeek++;
       calendarData.push({
-        day: '',
+        day: "",
         weekday: endWeek
       });
     }
@@ -166,12 +164,12 @@ class CalendarBody extends Component {
       const deletedElement = updatedElementDate.indexOf(data);
       // 配列から取り除く
       updatedElementDate.splice(deletedElement, 1);
-      document.getElementById(data).className = 'calendar-day';
+      document.getElementById(data).className = "calendar-day";
       this.setState({ selectedDay: updatedElementDate });
       // 上記以外の場合、配列内に追加する
     } else {
       updatedElementDate.push(data);
-      document.getElementById(data).className = 'calendar-day selected';
+      document.getElementById(data).className = "calendar-day selected";
       this.setState({ selectedDay: updatedElementDate });
     }
   };
@@ -183,8 +181,8 @@ class CalendarBody extends Component {
           key={index}
           className="calendar-week"
           style={{
-            borderRight: index === 6 ? '1px solid #969494' : 'none',
-            color: index === 0 || index === 6 ? '#ff5a5f' : null
+            borderRight: index === 6 ? "1px solid #969494" : "none",
+            color: index === 0 || index === 6 ? "#ff5a5f" : null
           }}
         >
           {week}
@@ -195,32 +193,28 @@ class CalendarBody extends Component {
 
   insertDay = calendarData => {
     return calendarData.map((data, index) => {
-      console.log(data);
       // date変換用
-      let d = '';
+      let d = "";
       // key専用
-      let element = '';
+      let element = "";
       // 曜日が休みかの判定用
-      let text = '';
       if (data.date !== undefined) {
         element = data.date;
         // chromeの場合 --- 英語
-        if (data.date.toString().indexOf(' (Japan Standard Time)') >= 0) {
-          d = data.date.toString().replace(' (Japan Standard Time)', '');
+        if (data.date.toString().indexOf(" (Japan Standard Time)") >= 0) {
+          d = data.date.toString().replace(" (Japan Standard Time)", "");
           // chromeの場合 --- 日本語
-        } else if (data.date.toString().indexOf(' (日本標準時)') >= 0) {
-          d = data.date.toString().replace(' (日本標準時)', '');
+        } else if (data.date.toString().indexOf(" (日本標準時)") >= 0) {
+          d = data.date.toString().replace(" (日本標準時)", "");
           // safariの場合
-        } else if (data.date.toString().indexOf(' (JST)') >= 0) {
-          d = data.date.toString().replace(' (JST)', '');
+        } else if (data.date.toString().indexOf(" (JST)") >= 0) {
+          d = data.date.toString().replace(" (JST)", "");
         } else {
           return null;
         }
-        text = element.toString();
       } else {
         d = data.date;
         element = index;
-        text = element.toString();
       }
       return (
         <div
@@ -229,11 +223,11 @@ class CalendarBody extends Component {
           // 月の行き来をしてもState内に存在していれば、スタイルが反映されるようにする
           className={
             this.state.selectedDay.indexOf(d) >= 0
-              ? 'calendar-day selected'
-              : 'calendar-day'
+              ? "calendar-day selected"
+              : "calendar-day"
           }
           style={{
-            borderRight: data.weekday === 6 ? '1px solid #969494' : 'none'
+            borderRight: data.weekday === 6 ? "1px solid #969494" : "none"
           }}
           onClick={() => this.onHolidayClick(d)}
         >
